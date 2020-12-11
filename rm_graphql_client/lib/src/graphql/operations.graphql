@@ -1,0 +1,18 @@
+query FetchRecipeList {
+  recipes {
+    id
+    name
+    description
+    image_url
+    __typename
+  }
+}
+
+query FetchRecipeIngredients($where: ingredients_bool_exp) {
+  ingredients(where: $where) {
+    id
+    name
+    recipe_id
+    __typename
+  }
+}

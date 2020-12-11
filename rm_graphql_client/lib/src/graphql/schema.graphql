@@ -1,0 +1,1051 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+"""
+columns and relationships of "ingredients"
+"""
+type ingredients {
+  id: Int!
+  name: String!
+
+  """An object relationship"""
+  recipe: recipes!
+  recipe_id: Int!
+}
+
+"""
+aggregated selection of "ingredients"
+"""
+type ingredients_aggregate {
+  aggregate: ingredients_aggregate_fields
+  nodes: [ingredients!]!
+}
+
+"""
+aggregate fields of "ingredients"
+"""
+type ingredients_aggregate_fields {
+  avg: ingredients_avg_fields
+  count(columns: [ingredients_select_column!], distinct: Boolean): Int
+  max: ingredients_max_fields
+  min: ingredients_min_fields
+  stddev: ingredients_stddev_fields
+  stddev_pop: ingredients_stddev_pop_fields
+  stddev_samp: ingredients_stddev_samp_fields
+  sum: ingredients_sum_fields
+  var_pop: ingredients_var_pop_fields
+  var_samp: ingredients_var_samp_fields
+  variance: ingredients_variance_fields
+}
+
+"""
+order by aggregate values of table "ingredients"
+"""
+input ingredients_aggregate_order_by {
+  avg: ingredients_avg_order_by
+  count: order_by
+  max: ingredients_max_order_by
+  min: ingredients_min_order_by
+  stddev: ingredients_stddev_order_by
+  stddev_pop: ingredients_stddev_pop_order_by
+  stddev_samp: ingredients_stddev_samp_order_by
+  sum: ingredients_sum_order_by
+  var_pop: ingredients_var_pop_order_by
+  var_samp: ingredients_var_samp_order_by
+  variance: ingredients_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "ingredients"
+"""
+input ingredients_arr_rel_insert_input {
+  data: [ingredients_insert_input!]!
+  on_conflict: ingredients_on_conflict
+}
+
+"""aggregate avg on columns"""
+type ingredients_avg_fields {
+  id: Float
+  recipe_id: Float
+}
+
+"""
+order by avg() on columns of table "ingredients"
+"""
+input ingredients_avg_order_by {
+  id: order_by
+  recipe_id: order_by
+}
+
+"""
+Boolean expression to filter rows from the table "ingredients". All fields are combined with a logical 'AND'.
+"""
+input ingredients_bool_exp {
+  _and: [ingredients_bool_exp]
+  _not: ingredients_bool_exp
+  _or: [ingredients_bool_exp]
+  id: Int_comparison_exp
+  name: String_comparison_exp
+  recipe: recipes_bool_exp
+  recipe_id: Int_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "ingredients"
+"""
+enum ingredients_constraint {
+  """unique or primary key constraint"""
+  ingredients_pkey
+}
+
+"""
+input type for incrementing integer column in table "ingredients"
+"""
+input ingredients_inc_input {
+  id: Int
+  recipe_id: Int
+}
+
+"""
+input type for inserting data into table "ingredients"
+"""
+input ingredients_insert_input {
+  id: Int
+  name: String
+  recipe: recipes_obj_rel_insert_input
+  recipe_id: Int
+}
+
+"""aggregate max on columns"""
+type ingredients_max_fields {
+  id: Int
+  name: String
+  recipe_id: Int
+}
+
+"""
+order by max() on columns of table "ingredients"
+"""
+input ingredients_max_order_by {
+  id: order_by
+  name: order_by
+  recipe_id: order_by
+}
+
+"""aggregate min on columns"""
+type ingredients_min_fields {
+  id: Int
+  name: String
+  recipe_id: Int
+}
+
+"""
+order by min() on columns of table "ingredients"
+"""
+input ingredients_min_order_by {
+  id: order_by
+  name: order_by
+  recipe_id: order_by
+}
+
+"""
+response of any mutation on the table "ingredients"
+"""
+type ingredients_mutation_response {
+  """number of affected rows by the mutation"""
+  affected_rows: Int!
+
+  """data of the affected rows by the mutation"""
+  returning: [ingredients!]!
+}
+
+"""
+input type for inserting object relation for remote table "ingredients"
+"""
+input ingredients_obj_rel_insert_input {
+  data: ingredients_insert_input!
+  on_conflict: ingredients_on_conflict
+}
+
+"""
+on conflict condition type for table "ingredients"
+"""
+input ingredients_on_conflict {
+  constraint: ingredients_constraint!
+  update_columns: [ingredients_update_column!]!
+  where: ingredients_bool_exp
+}
+
+"""
+ordering options when selecting data from "ingredients"
+"""
+input ingredients_order_by {
+  id: order_by
+  name: order_by
+  recipe: recipes_order_by
+  recipe_id: order_by
+}
+
+"""
+primary key columns input for table: "ingredients"
+"""
+input ingredients_pk_columns_input {
+  id: Int!
+}
+
+"""
+select columns of table "ingredients"
+"""
+enum ingredients_select_column {
+  """column name"""
+  id
+
+  """column name"""
+  name
+
+  """column name"""
+  recipe_id
+}
+
+"""
+input type for updating data in table "ingredients"
+"""
+input ingredients_set_input {
+  id: Int
+  name: String
+  recipe_id: Int
+}
+
+"""aggregate stddev on columns"""
+type ingredients_stddev_fields {
+  id: Float
+  recipe_id: Float
+}
+
+"""
+order by stddev() on columns of table "ingredients"
+"""
+input ingredients_stddev_order_by {
+  id: order_by
+  recipe_id: order_by
+}
+
+"""aggregate stddev_pop on columns"""
+type ingredients_stddev_pop_fields {
+  id: Float
+  recipe_id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "ingredients"
+"""
+input ingredients_stddev_pop_order_by {
+  id: order_by
+  recipe_id: order_by
+}
+
+"""aggregate stddev_samp on columns"""
+type ingredients_stddev_samp_fields {
+  id: Float
+  recipe_id: Float
+}
+
+"""
+order by stddev_samp() on columns of table "ingredients"
+"""
+input ingredients_stddev_samp_order_by {
+  id: order_by
+  recipe_id: order_by
+}
+
+"""aggregate sum on columns"""
+type ingredients_sum_fields {
+  id: Int
+  recipe_id: Int
+}
+
+"""
+order by sum() on columns of table "ingredients"
+"""
+input ingredients_sum_order_by {
+  id: order_by
+  recipe_id: order_by
+}
+
+"""
+update columns of table "ingredients"
+"""
+enum ingredients_update_column {
+  """column name"""
+  id
+
+  """column name"""
+  name
+
+  """column name"""
+  recipe_id
+}
+
+"""aggregate var_pop on columns"""
+type ingredients_var_pop_fields {
+  id: Float
+  recipe_id: Float
+}
+
+"""
+order by var_pop() on columns of table "ingredients"
+"""
+input ingredients_var_pop_order_by {
+  id: order_by
+  recipe_id: order_by
+}
+
+"""aggregate var_samp on columns"""
+type ingredients_var_samp_fields {
+  id: Float
+  recipe_id: Float
+}
+
+"""
+order by var_samp() on columns of table "ingredients"
+"""
+input ingredients_var_samp_order_by {
+  id: order_by
+  recipe_id: order_by
+}
+
+"""aggregate variance on columns"""
+type ingredients_variance_fields {
+  id: Float
+  recipe_id: Float
+}
+
+"""
+order by variance() on columns of table "ingredients"
+"""
+input ingredients_variance_order_by {
+  id: order_by
+  recipe_id: order_by
+}
+
+"""
+expression to compare columns of type Int. All fields are combined with logical 'AND'.
+"""
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  # _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  # _nin: [Int!]
+}
+
+"""mutation root"""
+type mutation_root {
+  """
+  delete data from the table: "ingredients"
+  """
+  delete_ingredients(
+    """filter the rows which have to be deleted"""
+    where: ingredients_bool_exp!
+  ): ingredients_mutation_response
+
+  """
+  delete single row from the table: "ingredients"
+  """
+  delete_ingredients_by_pk(id: Int!): ingredients
+
+  """
+  delete data from the table: "recipes"
+  """
+  delete_recipes(
+    """filter the rows which have to be deleted"""
+    where: recipes_bool_exp!
+  ): recipes_mutation_response
+
+  """
+  delete single row from the table: "recipes"
+  """
+  delete_recipes_by_pk(id: Int!): recipes
+
+  """
+  insert data into the table: "ingredients"
+  """
+  insert_ingredients(
+    """the rows to be inserted"""
+    objects: [ingredients_insert_input!]!
+
+    """on conflict condition"""
+    on_conflict: ingredients_on_conflict
+  ): ingredients_mutation_response
+
+  """
+  insert a single row into the table: "ingredients"
+  """
+  insert_ingredients_one(
+    """the row to be inserted"""
+    object: ingredients_insert_input!
+
+    """on conflict condition"""
+    on_conflict: ingredients_on_conflict
+  ): ingredients
+
+  """
+  insert data into the table: "recipes"
+  """
+  insert_recipes(
+    """the rows to be inserted"""
+    objects: [recipes_insert_input!]!
+
+    """on conflict condition"""
+    on_conflict: recipes_on_conflict
+  ): recipes_mutation_response
+
+  """
+  insert a single row into the table: "recipes"
+  """
+  insert_recipes_one(
+    """the row to be inserted"""
+    object: recipes_insert_input!
+
+    """on conflict condition"""
+    on_conflict: recipes_on_conflict
+  ): recipes
+
+  """
+  update data of the table: "ingredients"
+  """
+  update_ingredients(
+    """increments the integer columns with given value of the filtered values"""
+    _inc: ingredients_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: ingredients_set_input
+
+    """filter the rows which have to be updated"""
+    where: ingredients_bool_exp!
+  ): ingredients_mutation_response
+
+  """
+  update single row of the table: "ingredients"
+  """
+  update_ingredients_by_pk(
+    """increments the integer columns with given value of the filtered values"""
+    _inc: ingredients_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: ingredients_set_input
+    pk_columns: ingredients_pk_columns_input!
+  ): ingredients
+
+  """
+  update data of the table: "recipes"
+  """
+  update_recipes(
+    """increments the integer columns with given value of the filtered values"""
+    _inc: recipes_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: recipes_set_input
+
+    """filter the rows which have to be updated"""
+    where: recipes_bool_exp!
+  ): recipes_mutation_response
+
+  """
+  update single row of the table: "recipes"
+  """
+  update_recipes_by_pk(
+    """increments the integer columns with given value of the filtered values"""
+    _inc: recipes_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: recipes_set_input
+    pk_columns: recipes_pk_columns_input!
+  ): recipes
+}
+
+"""column ordering options"""
+enum order_by {
+  """in the ascending order, nulls last"""
+  asc
+
+  """in the ascending order, nulls first"""
+  asc_nulls_first
+
+  """in the ascending order, nulls last"""
+  asc_nulls_last
+
+  """in the descending order, nulls first"""
+  desc
+
+  """in the descending order, nulls first"""
+  desc_nulls_first
+
+  """in the descending order, nulls last"""
+  desc_nulls_last
+}
+
+"""query root"""
+type query_root {
+  """
+  fetch data from the table: "ingredients"
+  """
+  ingredients(
+    """distinct select on columns"""
+    distinct_on: [ingredients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [ingredients_order_by!]
+
+    """filter the rows returned"""
+    where: ingredients_bool_exp
+  ): [ingredients!]!
+
+  """
+  fetch aggregated fields from the table: "ingredients"
+  """
+  ingredients_aggregate(
+    """distinct select on columns"""
+    distinct_on: [ingredients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [ingredients_order_by!]
+
+    """filter the rows returned"""
+    where: ingredients_bool_exp
+  ): ingredients_aggregate!
+
+  """fetch data from the table: "ingredients" using primary key columns"""
+  ingredients_by_pk(id: Int!): ingredients
+
+  """
+  fetch data from the table: "recipes"
+  """
+  recipes(
+    """distinct select on columns"""
+    distinct_on: [recipes_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [recipes_order_by!]
+
+    """filter the rows returned"""
+    where: recipes_bool_exp
+  ): [recipes!]!
+
+  """
+  fetch aggregated fields from the table: "recipes"
+  """
+  recipes_aggregate(
+    """distinct select on columns"""
+    distinct_on: [recipes_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [recipes_order_by!]
+
+    """filter the rows returned"""
+    where: recipes_bool_exp
+  ): recipes_aggregate!
+
+  """fetch data from the table: "recipes" using primary key columns"""
+  recipes_by_pk(id: Int!): recipes
+}
+
+"""
+columns and relationships of "recipes"
+"""
+type recipes {
+  description: String
+  id: Int!
+  image_url: String
+
+  """An array relationship"""
+  ingredients(
+    """distinct select on columns"""
+    distinct_on: [ingredients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [ingredients_order_by!]
+
+    """filter the rows returned"""
+    where: ingredients_bool_exp
+  ): [ingredients!]!
+
+  """An aggregated array relationship"""
+  ingredients_aggregate(
+    """distinct select on columns"""
+    distinct_on: [ingredients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [ingredients_order_by!]
+
+    """filter the rows returned"""
+    where: ingredients_bool_exp
+  ): ingredients_aggregate!
+  name: String!
+}
+
+"""
+aggregated selection of "recipes"
+"""
+type recipes_aggregate {
+  aggregate: recipes_aggregate_fields
+  nodes: [recipes!]!
+}
+
+"""
+aggregate fields of "recipes"
+"""
+type recipes_aggregate_fields {
+  avg: recipes_avg_fields
+  count(columns: [recipes_select_column!], distinct: Boolean): Int
+  max: recipes_max_fields
+  min: recipes_min_fields
+  stddev: recipes_stddev_fields
+  stddev_pop: recipes_stddev_pop_fields
+  stddev_samp: recipes_stddev_samp_fields
+  sum: recipes_sum_fields
+  var_pop: recipes_var_pop_fields
+  var_samp: recipes_var_samp_fields
+  variance: recipes_variance_fields
+}
+
+"""
+order by aggregate values of table "recipes"
+"""
+input recipes_aggregate_order_by {
+  avg: recipes_avg_order_by
+  count: order_by
+  max: recipes_max_order_by
+  min: recipes_min_order_by
+  stddev: recipes_stddev_order_by
+  stddev_pop: recipes_stddev_pop_order_by
+  stddev_samp: recipes_stddev_samp_order_by
+  sum: recipes_sum_order_by
+  var_pop: recipes_var_pop_order_by
+  var_samp: recipes_var_samp_order_by
+  variance: recipes_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "recipes"
+"""
+input recipes_arr_rel_insert_input {
+  data: [recipes_insert_input!]!
+  on_conflict: recipes_on_conflict
+}
+
+"""aggregate avg on columns"""
+type recipes_avg_fields {
+  id: Float
+}
+
+"""
+order by avg() on columns of table "recipes"
+"""
+input recipes_avg_order_by {
+  id: order_by
+}
+
+"""
+Boolean expression to filter rows from the table "recipes". All fields are combined with a logical 'AND'.
+"""
+input recipes_bool_exp {
+  _and: [recipes_bool_exp]
+  _not: recipes_bool_exp
+  _or: [recipes_bool_exp]
+  description: String_comparison_exp
+  id: Int_comparison_exp
+  image_url: String_comparison_exp
+  ingredients: ingredients_bool_exp
+  name: String_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "recipes"
+"""
+enum recipes_constraint {
+  """unique or primary key constraint"""
+  recipes_pkey
+}
+
+"""
+input type for incrementing integer column in table "recipes"
+"""
+input recipes_inc_input {
+  id: Int
+}
+
+"""
+input type for inserting data into table "recipes"
+"""
+input recipes_insert_input {
+  description: String
+  id: Int
+  image_url: String
+  ingredients: ingredients_arr_rel_insert_input
+  name: String
+}
+
+"""aggregate max on columns"""
+type recipes_max_fields {
+  description: String
+  id: Int
+  image_url: String
+  name: String
+}
+
+"""
+order by max() on columns of table "recipes"
+"""
+input recipes_max_order_by {
+  description: order_by
+  id: order_by
+  image_url: order_by
+  name: order_by
+}
+
+"""aggregate min on columns"""
+type recipes_min_fields {
+  description: String
+  id: Int
+  image_url: String
+  name: String
+}
+
+"""
+order by min() on columns of table "recipes"
+"""
+input recipes_min_order_by {
+  description: order_by
+  id: order_by
+  image_url: order_by
+  name: order_by
+}
+
+"""
+response of any mutation on the table "recipes"
+"""
+type recipes_mutation_response {
+  """number of affected rows by the mutation"""
+  affected_rows: Int!
+
+  """data of the affected rows by the mutation"""
+  returning: [recipes!]!
+}
+
+"""
+input type for inserting object relation for remote table "recipes"
+"""
+input recipes_obj_rel_insert_input {
+  data: recipes_insert_input!
+  on_conflict: recipes_on_conflict
+}
+
+"""
+on conflict condition type for table "recipes"
+"""
+input recipes_on_conflict {
+  constraint: recipes_constraint!
+  update_columns: [recipes_update_column!]!
+  where: recipes_bool_exp
+}
+
+"""
+ordering options when selecting data from "recipes"
+"""
+input recipes_order_by {
+  description: order_by
+  id: order_by
+  image_url: order_by
+  ingredients_aggregate: ingredients_aggregate_order_by
+  name: order_by
+}
+
+"""
+primary key columns input for table: "recipes"
+"""
+input recipes_pk_columns_input {
+  id: Int!
+}
+
+"""
+select columns of table "recipes"
+"""
+enum recipes_select_column {
+  """column name"""
+  description
+
+  """column name"""
+  id
+
+  """column name"""
+  image_url
+
+  """column name"""
+  name
+}
+
+"""
+input type for updating data in table "recipes"
+"""
+input recipes_set_input {
+  description: String
+  id: Int
+  image_url: String
+  name: String
+}
+
+"""aggregate stddev on columns"""
+type recipes_stddev_fields {
+  id: Float
+}
+
+"""
+order by stddev() on columns of table "recipes"
+"""
+input recipes_stddev_order_by {
+  id: order_by
+}
+
+"""aggregate stddev_pop on columns"""
+type recipes_stddev_pop_fields {
+  id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "recipes"
+"""
+input recipes_stddev_pop_order_by {
+  id: order_by
+}
+
+"""aggregate stddev_samp on columns"""
+type recipes_stddev_samp_fields {
+  id: Float
+}
+
+"""
+order by stddev_samp() on columns of table "recipes"
+"""
+input recipes_stddev_samp_order_by {
+  id: order_by
+}
+
+"""aggregate sum on columns"""
+type recipes_sum_fields {
+  id: Int
+}
+
+"""
+order by sum() on columns of table "recipes"
+"""
+input recipes_sum_order_by {
+  id: order_by
+}
+
+"""
+update columns of table "recipes"
+"""
+enum recipes_update_column {
+  """column name"""
+  description
+
+  """column name"""
+  id
+
+  """column name"""
+  image_url
+
+  """column name"""
+  name
+}
+
+"""aggregate var_pop on columns"""
+type recipes_var_pop_fields {
+  id: Float
+}
+
+"""
+order by var_pop() on columns of table "recipes"
+"""
+input recipes_var_pop_order_by {
+  id: order_by
+}
+
+"""aggregate var_samp on columns"""
+type recipes_var_samp_fields {
+  id: Float
+}
+
+"""
+order by var_samp() on columns of table "recipes"
+"""
+input recipes_var_samp_order_by {
+  id: order_by
+}
+
+"""aggregate variance on columns"""
+type recipes_variance_fields {
+  id: Float
+}
+
+"""
+order by variance() on columns of table "recipes"
+"""
+input recipes_variance_order_by {
+  id: order_by
+}
+
+"""
+expression to compare columns of type String. All fields are combined with logical 'AND'.
+"""
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String!]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+"""subscription root"""
+type subscription_root {
+  """
+  fetch data from the table: "ingredients"
+  """
+  ingredients(
+    """distinct select on columns"""
+    distinct_on: [ingredients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [ingredients_order_by!]
+
+    """filter the rows returned"""
+    where: ingredients_bool_exp
+  ): [ingredients!]!
+
+  """
+  fetch aggregated fields from the table: "ingredients"
+  """
+  ingredients_aggregate(
+    """distinct select on columns"""
+    distinct_on: [ingredients_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [ingredients_order_by!]
+
+    """filter the rows returned"""
+    where: ingredients_bool_exp
+  ): ingredients_aggregate!
+
+  """fetch data from the table: "ingredients" using primary key columns"""
+  ingredients_by_pk(id: Int!): ingredients
+
+  """
+  fetch data from the table: "recipes"
+  """
+  recipes(
+    """distinct select on columns"""
+    distinct_on: [recipes_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [recipes_order_by!]
+
+    """filter the rows returned"""
+    where: recipes_bool_exp
+  ): [recipes!]!
+
+  """
+  fetch aggregated fields from the table: "recipes"
+  """
+  recipes_aggregate(
+    """distinct select on columns"""
+    distinct_on: [recipes_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [recipes_order_by!]
+
+    """filter the rows returned"""
+    where: recipes_bool_exp
+  ): recipes_aggregate!
+
+  """fetch data from the table: "recipes" using primary key columns"""
+  recipes_by_pk(id: Int!): recipes
+}
+
