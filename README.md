@@ -14,4 +14,6 @@ A recipe management app built with Hasura GraphQL Backend and Flutter
 2. Launch an iPhone/Android simulator. _Alternatively, connect your Android phone and enable USB debugging._
 2. Run `flutter run` in the terminal or use the launch button in your editor.
 
-See the full course for further instructions.
+Check out the **starter** branch for the base setup of this course.
+
+[See the full course](https://youtu.be/TBshP1eDVr0) for further instructions.
