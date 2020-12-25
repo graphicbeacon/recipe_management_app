@@ -11,6 +11,10 @@ Serializer<GFetchRecipeListVars> _$gFetchRecipeListVarsSerializer =
 Serializer<GFetchRecipeIngredientsVars>
     _$gFetchRecipeIngredientsVarsSerializer =
     new _$GFetchRecipeIngredientsVarsSerializer();
+Serializer<GDeleteRecipeVars> _$gDeleteRecipeVarsSerializer =
+    new _$GDeleteRecipeVarsSerializer();
+Serializer<GInsertRecipeVars> _$gInsertRecipeVarsSerializer =
+    new _$GInsertRecipeVarsSerializer();
 
 class _$GFetchRecipeListVarsSerializer
     implements StructuredSerializer<GFetchRecipeListVars> {
@@ -77,6 +81,90 @@ class _$GFetchRecipeIngredientsVarsSerializer
           result.where.replace(serializers.deserialize(value,
                   specifiedType: const FullType(_i2.Gingredients_bool_exp))
               as _i2.Gingredients_bool_exp);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GDeleteRecipeVarsSerializer
+    implements StructuredSerializer<GDeleteRecipeVars> {
+  @override
+  final Iterable<Type> types = const [GDeleteRecipeVars, _$GDeleteRecipeVars];
+  @override
+  final String wireName = 'GDeleteRecipeVars';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, GDeleteRecipeVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(int)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GDeleteRecipeVars deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GDeleteRecipeVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GInsertRecipeVarsSerializer
+    implements StructuredSerializer<GInsertRecipeVars> {
+  @override
+  final Iterable<Type> types = const [GInsertRecipeVars, _$GInsertRecipeVars];
+  @override
+  final String wireName = 'GInsertRecipeVars';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, GInsertRecipeVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'object',
+      serializers.serialize(object.object,
+          specifiedType: const FullType(_i2.Grecipes_insert_input)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GInsertRecipeVars deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GInsertRecipeVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'object':
+          result.object.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(_i2.Grecipes_insert_input))
+              as _i2.Grecipes_insert_input);
           break;
       }
     }
@@ -231,6 +319,180 @@ class GFetchRecipeIngredientsVarsBuilder
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'GFetchRecipeIngredientsVars', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GDeleteRecipeVars extends GDeleteRecipeVars {
+  @override
+  final int id;
+
+  factory _$GDeleteRecipeVars(
+          [void Function(GDeleteRecipeVarsBuilder) updates]) =>
+      (new GDeleteRecipeVarsBuilder()..update(updates)).build();
+
+  _$GDeleteRecipeVars._({this.id}) : super._() {
+    if (id == null) {
+      throw new BuiltValueNullFieldError('GDeleteRecipeVars', 'id');
+    }
+  }
+
+  @override
+  GDeleteRecipeVars rebuild(void Function(GDeleteRecipeVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GDeleteRecipeVarsBuilder toBuilder() =>
+      new GDeleteRecipeVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GDeleteRecipeVars && id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, id.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GDeleteRecipeVars')..add('id', id))
+        .toString();
+  }
+}
+
+class GDeleteRecipeVarsBuilder
+    implements Builder<GDeleteRecipeVars, GDeleteRecipeVarsBuilder> {
+  _$GDeleteRecipeVars _$v;
+
+  int _id;
+  int get id => _$this._id;
+  set id(int id) => _$this._id = id;
+
+  GDeleteRecipeVarsBuilder();
+
+  GDeleteRecipeVarsBuilder get _$this {
+    if (_$v != null) {
+      _id = _$v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GDeleteRecipeVars other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$GDeleteRecipeVars;
+  }
+
+  @override
+  void update(void Function(GDeleteRecipeVarsBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GDeleteRecipeVars build() {
+    final _$result = _$v ?? new _$GDeleteRecipeVars._(id: id);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GInsertRecipeVars extends GInsertRecipeVars {
+  @override
+  final _i2.Grecipes_insert_input object;
+
+  factory _$GInsertRecipeVars(
+          [void Function(GInsertRecipeVarsBuilder) updates]) =>
+      (new GInsertRecipeVarsBuilder()..update(updates)).build();
+
+  _$GInsertRecipeVars._({this.object}) : super._() {
+    if (object == null) {
+      throw new BuiltValueNullFieldError('GInsertRecipeVars', 'object');
+    }
+  }
+
+  @override
+  GInsertRecipeVars rebuild(void Function(GInsertRecipeVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GInsertRecipeVarsBuilder toBuilder() =>
+      new GInsertRecipeVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GInsertRecipeVars && object == other.object;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, object.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GInsertRecipeVars')
+          ..add('object', object))
+        .toString();
+  }
+}
+
+class GInsertRecipeVarsBuilder
+    implements Builder<GInsertRecipeVars, GInsertRecipeVarsBuilder> {
+  _$GInsertRecipeVars _$v;
+
+  _i2.Grecipes_insert_inputBuilder _object;
+  _i2.Grecipes_insert_inputBuilder get object =>
+      _$this._object ??= new _i2.Grecipes_insert_inputBuilder();
+  set object(_i2.Grecipes_insert_inputBuilder object) =>
+      _$this._object = object;
+
+  GInsertRecipeVarsBuilder();
+
+  GInsertRecipeVarsBuilder get _$this {
+    if (_$v != null) {
+      _object = _$v.object?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GInsertRecipeVars other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$GInsertRecipeVars;
+  }
+
+  @override
+  void update(void Function(GInsertRecipeVarsBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GInsertRecipeVars build() {
+    _$GInsertRecipeVars _$result;
+    try {
+      _$result = _$v ?? new _$GInsertRecipeVars._(object: object.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'object';
+        object.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GInsertRecipeVars', _$failedField, e.toString());
       }
       rethrow;
     }

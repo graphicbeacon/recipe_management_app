@@ -7,6 +7,11 @@ part of 'serializers.gql.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(GDeleteRecipeData.serializer)
+      ..add(GDeleteRecipeData_delete_recipes_by_pk.serializer)
+      ..add(GDeleteRecipeData_delete_recipes_by_pk_ingredients.serializer)
+      ..add(GDeleteRecipeReq.serializer)
+      ..add(GDeleteRecipeVars.serializer)
       ..add(GFetchRecipeIngredientsData.serializer)
       ..add(GFetchRecipeIngredientsData_ingredients.serializer)
       ..add(GFetchRecipeIngredientsReq.serializer)
@@ -15,6 +20,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GFetchRecipeListData_recipes.serializer)
       ..add(GFetchRecipeListReq.serializer)
       ..add(GFetchRecipeListVars.serializer)
+      ..add(GInsertRecipeData.serializer)
+      ..add(GInsertRecipeData_insert_recipes_one.serializer)
+      ..add(GInsertRecipeData_insert_recipes_one_ingredients.serializer)
+      ..add(GInsertRecipeReq.serializer)
+      ..add(GInsertRecipeVars.serializer)
       ..add(GInt_comparison_exp.serializer)
       ..add(GString_comparison_exp.serializer)
       ..add(Gingredients_aggregate_order_by.serializer)
@@ -65,6 +75,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Grecipes_var_samp_order_by.serializer)
       ..add(Grecipes_variance_order_by.serializer)
       ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GDeleteRecipeData_delete_recipes_by_pk_ingredients)
+          ]),
+          () => new ListBuilder<
+              GDeleteRecipeData_delete_recipes_by_pk_ingredients>())
+      ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GFetchRecipeIngredientsData_ingredients)]),
           () => new ListBuilder<GFetchRecipeIngredientsData_ingredients>())
@@ -72,6 +88,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(GFetchRecipeListData_recipes)]),
           () => new ListBuilder<GFetchRecipeListData_recipes>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(GInsertRecipeData_insert_recipes_one_ingredients)
+          ]),
+          () => new ListBuilder<
+              GInsertRecipeData_insert_recipes_one_ingredients>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(Gingredients_bool_exp)]),

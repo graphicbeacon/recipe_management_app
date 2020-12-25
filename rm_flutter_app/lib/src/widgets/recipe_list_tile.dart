@@ -14,9 +14,28 @@ class RecipeListTile extends StatelessWidget {
   const RecipeListTile({Key key, @required this.recipe}) : super(key: key);
 
   void _removeRecipe(BuildContext context, int recipeId) {
-    // TODO Perform operation to delete recipe
+    final client = GetIt.instance<Client>();
+    final deleteRecipeReq = GDeleteRecipeReq(
+      (b) => b..vars.id = recipeId,
+    );
 
-    Navigator.of(context).pop();
+    client.request(deleteRecipeReq).listen((response) {
+      // print(response.data.delete_recipes_by_pk);
+
+      // Update cache
+      final recipesReq = GFetchRecipeListReq();
+      final cache = client.cache.readQuery(recipesReq);
+      final updatedRecipes = GFetchRecipeListData((b) {
+        return b
+          ..recipes.addAll(cache.recipes)
+          ..recipes.removeWhere(
+              (recipe) => recipe.id == response.data.delete_recipes_by_pk.id);
+      });
+
+      client.cache.writeQuery(recipesReq, updatedRecipes);
+
+      Navigator.of(context).pop();
+    });
   }
 
   @override
@@ -26,7 +45,7 @@ class RecipeListTile extends StatelessWidget {
       secondaryActions: [
         IconSlideAction(
           caption: 'Delete',
-          icon: CupertinoIcons.pencil,
+          icon: CupertinoIcons.trash,
           color: Colors.blueGrey,
           onTap: () {
             showCupertinoDialog(
@@ -108,9 +127,12 @@ class RecipeListTile extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            height: 1,
-            color: Colors.grey.shade200,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Container(
+              height: 1,
+              color: Colors.grey.shade200,
+            ),
           )
         ],
       ),

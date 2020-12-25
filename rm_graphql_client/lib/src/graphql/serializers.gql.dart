@@ -5,14 +5,28 @@ import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
 import 'package:rm_graphql_client/src/graphql/operations.data.gql.dart'
     show
+        GDeleteRecipeData,
+        GDeleteRecipeData_delete_recipes_by_pk,
+        GDeleteRecipeData_delete_recipes_by_pk_ingredients,
         GFetchRecipeIngredientsData,
         GFetchRecipeIngredientsData_ingredients,
         GFetchRecipeListData,
-        GFetchRecipeListData_recipes;
+        GFetchRecipeListData_recipes,
+        GInsertRecipeData,
+        GInsertRecipeData_insert_recipes_one,
+        GInsertRecipeData_insert_recipes_one_ingredients;
 import 'package:rm_graphql_client/src/graphql/operations.req.gql.dart'
-    show GFetchRecipeIngredientsReq, GFetchRecipeListReq;
+    show
+        GDeleteRecipeReq,
+        GFetchRecipeIngredientsReq,
+        GFetchRecipeListReq,
+        GInsertRecipeReq;
 import 'package:rm_graphql_client/src/graphql/operations.var.gql.dart'
-    show GFetchRecipeIngredientsVars, GFetchRecipeListVars;
+    show
+        GDeleteRecipeVars,
+        GFetchRecipeIngredientsVars,
+        GFetchRecipeListVars,
+        GInsertRecipeVars;
 import 'package:rm_graphql_client/src/graphql/schema.schema.gql.dart'
     show
         GInt_comparison_exp,
@@ -71,6 +85,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..add(OperationSerializer())
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
+  GDeleteRecipeData,
+  GDeleteRecipeData_delete_recipes_by_pk,
+  GDeleteRecipeData_delete_recipes_by_pk_ingredients,
+  GDeleteRecipeReq,
+  GDeleteRecipeVars,
   GFetchRecipeIngredientsData,
   GFetchRecipeIngredientsData_ingredients,
   GFetchRecipeIngredientsReq,
@@ -79,6 +98,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GFetchRecipeListData_recipes,
   GFetchRecipeListReq,
   GFetchRecipeListVars,
+  GInsertRecipeData,
+  GInsertRecipeData_insert_recipes_one,
+  GInsertRecipeData_insert_recipes_one_ingredients,
+  GInsertRecipeReq,
+  GInsertRecipeVars,
   GInt_comparison_exp,
   GString_comparison_exp,
   Gingredients_aggregate_order_by,

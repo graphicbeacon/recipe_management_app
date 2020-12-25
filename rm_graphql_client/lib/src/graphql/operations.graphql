@@ -16,3 +16,35 @@ query FetchRecipeIngredients($where: ingredients_bool_exp) {
     __typename
   }
 }
+
+mutation DeleteRecipe($id: Int!) {
+  delete_recipes_by_pk(id: $id) {
+    id
+    name
+    description
+    image_url
+    __typename
+    ingredients {
+      id
+      name
+      recipe_id
+      __typename
+    }
+  }
+}
+
+mutation InsertRecipe($object: recipes_insert_input!) {
+  insert_recipes_one(object: $object) {
+    id
+    name
+    description
+    image_url
+    __typename
+    ingredients {
+      id
+      name
+      recipe_id
+      __typename
+    }
+  }
+}
