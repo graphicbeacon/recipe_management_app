@@ -16,6 +16,7 @@ dependencies:
     path: ../rm_graphql_client
   flutter:
     sdk: flutter
+  flutter_dotenv: ^2.1.0
 dev_dependencies:
   ferry_generator: ^0.3.3
   build_runner: ^1.10.2
@@ -23,3 +24,5 @@ dev_dependencies:
     sdk: flutter
 flutter:
   uses-material-design: true
+  assets:
+    - .env
